@@ -10,6 +10,8 @@
     </h1>
     Geometry Calculator
     <h1>
+    
+
   
     <style> 
         body { 
@@ -25,14 +27,72 @@
             margin-top: 10px; 
         } 
     </style> 
+<body>
+	<style>
+    
+    </style>
+
+    <p> Select one from the given options:
+        <select id="select1">
+            <option value="circle">circle</option>
+            <option value="triangle">triangle</option>
+            <option value="quadrilateral">quadrilateral</option>
+            <option value="trapeoid">trapezoid</option>
+            <option value="pythagorean theorem">pythagorean theorem</option>
+            <option value="sphere">sphere</option>
+            <option value="pyrmid">pyrmid</option>
+            <option value="cone">cone</option>
+            <option value="prisim">prisim</option>
+            <option value="trigonometry">trigonometry</option>
+        </select>
+    </p>
+ 
+    <button onclick="getOption()"> select </button>
+
+     
+    <script type="text/javascript">
+    function getOption() {
+        selectElement = document.querySelector('#select1');
+        output = selectElement.value;
+        document.querySelector('.output').textContent = output;
+    }
+    </script>
+
+
+ <p> Select one from the given options:
+        <select id="select2">
+            <option value="area">area</option>
+            <option value="perimeter">perimeter</option>
+            <option value="volume">volume</option>
+            <option value="surface area">surface area</option>
+            <option value="formula">formula</option>
+           
+        </select>
+    </p>
+ 
+    <button onclick="getOption2()" "getOption()"> select</button>
+    <button onclick="uiSolve()"> solve </button>
+     
+    <script type="text/javascript">
+    function getOption2() {
+        selectElement = document.querySelector('#select2');
+        output2 = selectElement.value;
+        document.querySelector('.output').textContent = output2;
+      
+    }
+    </script>
+
+
+
+
+
 </head> 
+
   
 <body> 
 
   
-    <input type="button" class="button"
-        value="Solve" 
-        onclick="uiSolve()" > 
+
   
     <script> 
         console.log('script loaded');
@@ -179,8 +239,9 @@ function solve(shape, command) {
    return alert(base+(perimeter/2)*slantHeight)
    }
   if(shape==="trigonometry"&command==="formula"){
-       alert("please put x in the side you want to calculate and y in the side that is irrelavent")
+
        theta=prompt("theta=")
+ alert("please put x in the side you want to calculate and y in the side that is irrelavent")
        adjacent=prompt("adjacent=")
        opposite=prompt("opposite=")
        hypotenuse=prompt("hypotenuse=")
@@ -207,11 +268,12 @@ function solve(shape, command) {
     return alert("Invalid shape or command");
 }
 
+
+
+
 function uiSolve() {
-    var shape =''
-    var command =''
-    shape=prompt('shape=')
-    command=prompt('command=')
+    var shape =output
+    var command =output2
     solve(shape,command)
 }
 
@@ -221,4 +283,5 @@ function uiSolve() {
     uiSolve(); 
     </script> 
 </body> 
+</html>
   
