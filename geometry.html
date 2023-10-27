@@ -2,92 +2,64 @@
 
 <!DOCTYPE html> 
 <html> 
-  
 <head> 
-    <title> 
-     Geometry Calculator
-    </title> 
-    </h1>
-    Geometry Calculator
-    <h1>
-    
-
-  
+    <title>Geometry Calculator</title> 
     <style> 
         body { 
             text-align: center; 
         } 
-  
         h1 { 
             color: green; 
         } 
-          
         input[type="button"] { 
             padding: 5px 10px; 
             margin-top: 10px; 
         } 
     </style> 
-<body>
-	<style>
-    
-    </style>
-
+</head> 
+<body> 
+    <h1>Geometry Calculator</h1>
     <p> Select one from the given options:
         <select id="select1">
             <option value="circle">circle</option>
             <option value="triangle">triangle</option>
             <option value="quadrilateral">quadrilateral</option>
-            <option value="trapeoid">trapezoid</option>
+            <option value="trapezoid">trapezoid</option>
             <option value="pythagorean theorem">pythagorean theorem</option>
             <option value="sphere">sphere</option>
-            <option value="pyrmid">pyrmid</option>
+            <option value="pyramid">pyramid</option>
             <option value="cone">cone</option>
-            <option value="prisim">prisim</option>
+            <option value="prism">prism</option>
             <option value="trigonometry">trigonometry</option>
         </select>
     </p>
- 
-    <button onclick="getOption()"> select </button>
-
-     
-    <script type="text/javascript">
-    function getOption() {
-        selectElement = document.querySelector('#select1');
-        output = selectElement.value;
-        document.querySelector('.output').textContent = output;
-    }
-    </script>
-
-
- <p> Select one from the given options:
+    <p> Select one from the given options:
         <select id="select2">
             <option value="area">area</option>
             <option value="perimeter">perimeter</option>
             <option value="volume">volume</option>
             <option value="surface area">surface area</option>
             <option value="formula">formula</option>
-           
         </select>
     </p>
- 
-    <button onclick="getOption2()" "getOption()"> select</button>
-    <button onclick="uiSolve()"> solve </button>
-     
-    <script type="text/javascript">
-    function getOption2() {
-        selectElement = document.querySelector('#select2');
-        output2 = selectElement.value;
-        document.querySelector('.output').textContent = output2;
-      
-    }
-    </script>
+    <div class="output"></div>
+    <button onclick="getOption()">Select</button>
+    <button onclick="uiSolve()">Solve</button>
+    <div class="result"></div>
 
+    <script>
+        // Function to capture selected options
+        function getOption() {
+            var selectElement = document.querySelector('#select1');
+            var output = selectElement.value;
+            document.querySelector('.output').textContent = output;
 
-
-
-
-</head> 
-
+            var selectElement2 = document.querySelector('#select2');
+            var output2 = selectElement2.value;
+            document.querySelector('.output').textContent = output2;
+        }
+       
+	</script>
   
 <body> 
 
@@ -272,16 +244,14 @@ function solve(shape, command) {
 
 
 function uiSolve() {
-    var shape =output
-    var command =output2
-    solve(shape,command)
+    solve(output,output2)
 }
 
 
 
-// Add an event listener to call uiSolve when the page loads
     uiSolve(); 
     </script> 
 </body> 
 </html>
   
+
