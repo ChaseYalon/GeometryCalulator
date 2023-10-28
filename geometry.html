@@ -14,41 +14,39 @@
             margin-top: 10px;
         }
     </style>
+
 </head>
 <body>
-    <h1>Geometry Calculator</h1>
-    <p>Select one from the given options:
-        <select id="select1">
-            <option value="circle">circle</option>
-            <option value="triangle">triangle</option>
-            <option value="quadrilateral">quadrilateral</option>
-            <option value="trapezoid">trapezoid</option>
-            <option value="pythagorean theorem">pythagorean theorem</option>
-            <option value="sphere">sphere</option>
-            <option value="pyramid">pyramid</option>
-            <option value="cone">cone</option>
-            <option value="prism">prism</option>
-            <option value="trigonometry">trigonometry</option>
 
-            <!-- Add other options here -->
-        </select>
-    </p>
-    <p>Select one from the given options:
-        <select id="select2">
-            <option value="area">area</option>
-            <option value="perimeter">perimeter</option>
-            <option value="volume">volume</option>
-            <option value="surface area">surface area</option>
-            <option value="formula">formula</option>
-            <!-- Add other options here -->
-        </select>
-    </p>
+<select id="select1" onchange="uiSelect()">
+  <option value="circle">circle</option>
+  <option value="triangle">triangle</option>
+  <option value="quadrilateral">quadrilateral</option>
+  <option value="trapezoid">trapezoid</option>
+  <option value="pythagorean theorem">pythagorean theorem</option>
+  <option value="sphere">sphere</option>
+  <option value="pyramid">pyramid</option>
+  <option value="cone">cone</option>
+  <option value="prism">prism</option>
+  <option value="trigonometry">trigonometry</option>
+</select>
+
+<select id="select2" onchange="uiSelect()">
+  <option value="area">area</option>
+  <option value="perimeter">perimeter</option>
+  <option value="volume">volume</option>
+  <option value="surface area">surface area</option>
+  <option value="formula">formula</option>
+</select>
+
     <div class="output"></div>
-    <button id="select-button">Select</button>
     <button onclick="uiSolve()">Solve</button>
     <div class="result"></div>
 
     <script>
+    	function uiSelect(){
+        uisolve()
+        }
         function getOptions() {
             const shape = document.getElementById('select1').value;
             const command = document.getElementById('select2').value;
@@ -172,6 +170,7 @@
         case "trigonometry":
             if (command === "formula") {
                 const theta = parseFloat(prompt("Enter the angle in degrees:"));
+                alert("please enter x in the side you are trying to solve for and y for the side that is useless")
                 const adjacent = parseFloat(prompt("Enter the adjacent side:"));
                 const opposite = parseFloat(prompt("Enter the opposite side:"));
                 const hypotenuse = parseFloat(prompt("Enter the hypotenuse:"));
@@ -197,12 +196,31 @@
 
     document.querySelector(".result").textContent = result;
 }
+function isValidShape(shape) {
+  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism"];
+  return validShapes.includes(shape);
+}
+
+function isValidCommand(command) {
+  const validCommands = ["area", "perimeter", "volume", "surface area", "formula"];
+  return validCommands.includes(command);
+}
 
 
-        function uiSolve() {
-            const options = getOptions();
-            solve(options.shape, options.command);
-        }
+
+function uiSolve() {
+  const options = getOptions();
+
+  // Validate the shape and command
+  if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
+    alert("Invalid shape or command.");
+    return;
+  }
+
+  // Call the solve function
+  solve(options.shape, options.command);
+}
+
 
         window.onload = function() {
             // Initialize the UI
