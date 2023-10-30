@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Geometry Calculator</title>
+
     <style>
         body {
             text-align: center;
@@ -14,7 +14,9 @@
             margin-top: 10px;
         }
     </style>
-
+    <title>
+    Geometry Calculator
+    </title>
 </head>
 <body>
 
@@ -169,7 +171,7 @@
 
         case "trigonometry":
             if (command === "formula") {
-                const theta = parseFloat(prompt("Enter the angle in degrees:"));
+                const theta = parseFloat(prompt("Enter theta in degrees:"));
                 alert("please enter x in the side you are trying to solve for and y for the side that is useless")
                 const adjacent = parseFloat(prompt("Enter the adjacent side:"));
                 const opposite = parseFloat(prompt("Enter the opposite side:"));
@@ -197,7 +199,7 @@
     document.querySelector(".result").textContent = result;
 }
 function isValidShape(shape) {
-  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism"];
+  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry"];
   return validShapes.includes(shape);
 }
 
