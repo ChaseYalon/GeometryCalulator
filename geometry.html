@@ -21,6 +21,7 @@
 <body>
 
 <select id="select1" onchange="uiSelect()">
+ <option value="Please Select a Shape">Please Select a Shape</option>
   <option value="circle">circle</option>
   <option value="triangle">triangle</option>
   <option value="quadrilateral">quadrilateral</option>
@@ -34,6 +35,7 @@
 </select>
 
 <select id="select2" onchange="uiSelect()">
+  <option value="Please Select a Command">Please Select a Command</option>
   <option value="area">area</option>
   <option value="perimeter">perimeter</option>
   <option value="volume">volume</option>
@@ -61,6 +63,13 @@
     let result = "";
 
     switch (shape) {
+            case "Please Select a Shape":
+            if (command === "Please Select a Command") {
+                
+                result ="Please select a shape and command"
+          
+            }
+            break;
         case "circle":
             if (command === "area") {
                 const radius = parseFloat(prompt("Enter the radius:"));
@@ -199,12 +208,12 @@
     document.querySelector(".result").textContent = result;
 }
 function isValidShape(shape) {
-  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry"];
+  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
   return validShapes.includes(shape);
 }
 
 function isValidCommand(command) {
-  const validCommands = ["area", "perimeter", "volume", "surface area", "formula"];
+  const validCommands = ["area", "perimeter", "volume", "surface area", "formula","Please Select a Command"];
   return validCommands.includes(command);
 }
 
