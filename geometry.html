@@ -194,23 +194,30 @@ Please reach me at 28yalonc@mtps.us for any bugs or sugestions
 
         case "trigonometry":
             if (command === "formula") {
-                const theta = parseFloat(prompt("Enter theta in degrees:"));
-                alert("please enter x in the side you are trying to solve for and y for the side that is useless")
-                const adjacent = parseFloat(prompt("Enter the adjacent side:"));
-                const opposite = parseFloat(prompt("Enter the opposite side:"));
-                const hypotenuse = parseFloat(prompt("Enter the hypotenuse:"));
-
-                if (!isNaN(theta)) {
-                    if (!isNaN(adjacent) && !isNaN(opposite)) {
-                        result = hypotenuse * Math.cos((theta * Math.PI) / 180);
-                    } else if (!isNaN(opposite) && !isNaN(hypotenuse)) {
-                        result = adjacent * Math.tan((theta * Math.PI) / 180);
-                    } else if (!isNaN(hypotenuse) && !isNaN(adjacent)) {
-                        result = opposite * (1 / Math.sin((theta * Math.PI) / 180));
-                    } else if (!isNaN(hypotenuse) && !isNaN(opposite)) {
-                        result = adjacent * (1 / Math.cos((theta * Math.PI) / 180));
-                    }
-                }
+            const theta=parseFloat(prompt("Enter the value for Theta in degrees"))
+            alert("Please put x for the side you are solving for and y in the side that is useless")
+            const adjacent=parseFloat(prompt("Enter the value for adjacent"))
+            const opposite=parseFloat(prompt("Enter the value for opposite"))
+            const hypotenuse=parseFloat(prompt("Enter the value for hypotenuse"))
+            
+			if(opposite==="x"&&&adjacent==="y"){
+            result=hypotenuse*Math.sin(theta)
+            }
+            if(adjacent==="x" &&& opposite==="y"){
+            result=hypotenuse*Math.cos(theta)
+            }
+            if(opposite==="x" &&& hypotenuse==="y"){
+            result=adjacent*Math.tan(theta)
+            }
+            if(hypotenuse==="x" &&& opposite==="y"){
+            result=adjacent*Math.sec(theta)
+            }
+            if(hypotenuse==="x" &&& adjacent==="y"){
+            result=opposite*Math.csc(theta)
+            }
+            if(adjacent==="x" &&& hypotenuse==="y"){
+            opposite*Math.cot(theta)
+            }
             }
             break;
 
