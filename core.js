@@ -130,31 +130,26 @@
 
         case "trigonometry":
             if (command === "formula") {
-            const Itheta=parseFloat(prompt("Enter the value for Theta in degrees"))
-            alert("Please put x for the side you are solving for and y in the side that is useless")
-            const adjacent=parseFloat(prompt("Enter the value for adjacent"))
-            const opposite=parseFloat(prompt("Enter the value for opposite"))
-            const hypotenuse=parseFloat(prompt("Enter the value for hypotenuse"))
-            const theta=Itheta*Math.PI/180
-            
-			if(opposite==="x"&adjacent==="y"){
-            result=hypotenuse*Math.sin(theta)
-            }
-            else if(adjacent==="x" & opposite==="y"){
-            result=hypotenuse*Math.cos(theta)
-            }
-            else if(opposite==="x" & hypotenuse==="y"){
-            result=adjacent*Math.tan(theta)
-            }
-            else if(hypotenuse==="x" & opposite==="y"){
-            result=adjacent*Math.sec(theta)
-            }
-            else if(hypotenuse==="x" & adjacent==="y"){
-            result=opposite*Math.csc(theta)
-            }
-            else if(adjacent==="x" & hypotenuse==="y"){
-            opposite*Math.cot(theta)
-            }
+const Itheta = parseFloat(prompt("Enter the value for Theta in degrees"));
+alert("Please put x for the side you are solving for and y in the side that is useless");
+const adjacent = prompt("Enter the value for adjacent");
+const opposite = prompt('Enter the value for opposite');
+const hypotenuse = parseFloat(prompt("Enter the value for hypotenuse"));
+const theta = Itheta * (Math.PI / 180);
+
+if (opposite === 'x' && adjacent === 'y') {
+    result = hypotenuse * Math.sin(theta);
+} else if (adjacent === 'x' && opposite === 'y') {
+    result = hypotenuse * Math.cos(theta);
+} else if (opposite === 'x' && hypotenuse === 0) {
+    result = adjacent / Math.tan(theta);
+} else if (hypotenuse === 'x' && opposite === 'y') {
+    result = adjacent / (1 / Math.sin(theta));
+} else if (hypotenuse === 'x' && adjacent === 'y') {
+    result = opposite / Math.cos(theta);
+} else if (adjacent === 'x' && hypotenuse === 'y') {
+    result = opposite / Math.tan(theta);
+}
             }
             break;
 
