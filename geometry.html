@@ -59,7 +59,7 @@ All rights reserved 2023
 Please reach me at 28yalonc@mtps.us for any bugs or sugestions
 <hr>
 </hr>
-<a href="https://docs.google.com/document/d/1gp59ijskpiOwh9ics3xiattdgwxkM1FluSdWqb8lyHo/edit">Patch notes</a>
+<a href="https://docs.google.com/document/d/1gp59ijskpiOwh9ics3xiattdgwxkM1FluSdWqb8lyHo/view">Patch notes</a>
 </p1>
     <script>
     	function uiSelect(){
@@ -194,30 +194,26 @@ Please reach me at 28yalonc@mtps.us for any bugs or sugestions
 
         case "trigonometry":
             if (command === "formula") {
-            const theta=parseFloat(prompt("Enter the value for Theta in degrees"))
-            alert("Please put x for the side you are solving for and y in the side that is useless")
-            const adjacent=parseFloat(prompt("Enter the value for adjacent"))
-            const opposite=parseFloat(prompt("Enter the value for opposite"))
-            const hypotenuse=parseFloat(prompt("Enter the value for hypotenuse"))
-            
-			if(opposite==="x"&&&adjacent==="y"){
-            result=hypotenuse*Math.sin(theta)
-            }
-            if(adjacent==="x" &&& opposite==="y"){
-            result=hypotenuse*Math.cos(theta)
-            }
-            if(opposite==="x" &&& hypotenuse==="y"){
-            result=adjacent*Math.tan(theta)
-            }
-            if(hypotenuse==="x" &&& opposite==="y"){
-            result=adjacent*Math.sec(theta)
-            }
-            if(hypotenuse==="x" &&& adjacent==="y"){
-            result=opposite*Math.csc(theta)
-            }
-            if(adjacent==="x" &&& hypotenuse==="y"){
-            opposite*Math.cot(theta)
-            }
+const Itheta = parseFloat(prompt("Enter the value for Theta in degrees"));
+alert("Please put x for the side you are solving for and y in the side that is useless");
+const adjacent = prompt("Enter the value for adjacent");
+const opposite = prompt('Enter the value for opposite');
+const hypotenuse = parseFloat(prompt("Enter the value for hypotenuse"));
+const theta = Itheta * (Math.PI / 180);
+
+if (opposite === 'x' && adjacent === 'y') {
+    result = hypotenuse * Math.sin(theta);
+} else if (adjacent === 'x' && opposite === 'y') {
+    result = hypotenuse * Math.cos(theta);
+} else if (opposite === 'x' && hypotenuse === 0) {
+    result = adjacent / Math.tan(theta);
+} else if (hypotenuse === 'x' && opposite === 'y') {
+    result = adjacent / (1 / Math.sin(theta));
+} else if (hypotenuse === 'x' && adjacent === 'y') {
+    result = opposite / Math.cos(theta);
+} else if (adjacent === 'x' && hypotenuse === 'y') {
+    result = opposite / Math.tan(theta);
+}
             }
             break;
 
