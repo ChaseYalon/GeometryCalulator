@@ -1,189 +1,197 @@
-console.log('script loaded');
+    	function uiSelect(){
+        uisolve()
+        }
+        function getOptions() {
+            const shape = document.getElementById('select1').value;
+            const command = document.getElementById('select2').value;
 
-function csc(theta) {
-    return 1 / Math.sin(theta);
-}
+            return { shape, command };
+        }
 
-function cot(theta) {
-    return Math.cos(theta) / Math.sin(theta);
-}
+      function solve(shape, command) {
+    const pi = Math.PI;
+    let result = "";
 
-function sec(theta) {
-    return 1 / Math.cos(theta);
-}
-
-const pi = Math.PI;
-const square = Math.pow(2, 2);
-const random = Math.random();
-const math = Math;
-
-var length = 0;
-var width = 0;
-var Height_2D = 0;
-var adjacent = 0;
-var opposite = 0;
-var hypotenuse = 0;
-var ThetaInDegrees = 0;
-var height = 0;
-var base = 0;
-var radius = 0;
-var slantHeight = 0;
-var Perimeter = 0;
-var base1 = 0;
-var base2 = 0;
-var theta = 0;
-var circle = "circle";
-var area = "area";
-var perimeter = "perimeter";
-var quadrilateral = "quadrilateral";
-var triangle = "triangle";
-var trapezoid = "trapezoid";
-var pythagoreanTheorem = "pythagorean theorem";
-var formula = "formula";
-var prisim = "prisim";
-var volume = "volume";
-var surfaceArea = "surface area";
-var sphere = "sphere";
-var cone = "cone";
-var pyramid = "pyramid";
-var solveForAdjacent = "solve for adjacent";
-var trigonometry = "trigonometry";
-
-function solve(shape, command) {
-    if (shape === "circle" && command === "area") {
-        radius = prompt("radius=");
-        return alert(pi * (radius * radius));
-    }
-    if (shape === "circle" && command === "perimeter") {
-        radius = prompt("radius=");
-        return alert(2 * pi * radius);
-    }
-    if (shape === "quadrilateral" && command === "area") {
-        length = prompt("length=");
-        width = prompt("width=");
-        return alert(length * width);
-    }
-    if (shape === "quadrilateral" && command === "perimeter") {
-        length = prompt("length=");
-        width = prompt("width=");
-        return alert(2 * length + 2 * width);
-    }
-    if (shape === "triangle" && command === "area") {
-        length = prompt("length=");
-        width = prompt("width=");
-        return alert((length * width) / 2);
-    }
-    if (shape === "triangle" && command === "perimeter") {
-        alert("cannot be computed please just add the 3 sides");
-    }
-
-   if(shape==="trapezoid"&command==="area"){
-       base1=prompt("base1=")
-       base2=prompt("base2=")
-       height=prompt("height=")
-       return alert(0.5*(base1+base2)*height)
-   };
-   if(shape==="trapezoid"&command==="perimeter"){
-       return alert("cannot be computed please just add the 5 sides");
-   };
-   if(shape==="pythagorean theorem"&command==="formula"){
-       alert("please make the side you want to find as ")
-
-       adjacent=prompt("adjacent=")
-       opposite=prompt("opposite=")
-       hypotenuse=prompt("hypotenuse=")
-            if(adjacent="x"){
-            return alert(Math.sqrt(hypotenuse*hypotenuse-(opposite*opposite)))
+    switch (shape) {
+            case "Please Select a Shape":
+            if (command === "Please Select a Command") {
+                
+                result ="Please select a shape and command"
+          
             }
-            if(opposite="x"){
-            return alert(Math.sqrt(hypotenuse*hypotenuse-(adjacent*adjacent)))
+            break;
+        case "circle":
+            if (command === "area") {
+                const radius = parseFloat(prompt("Enter the radius:"));
+                result = pi * Math.pow(radius, 2);
+            } else if (command === "perimeter") {
+                const radius = parseFloat(prompt("Enter the radius:"));
+                result = 2 * pi * radius;
             }
-            if(hypotenuse="x"){
-            return alert(math.sqrt(adjacent * adjacent + opposite * opposite))    
-            }
-  
-   };
-   if(shape==="prisim"&command==="volume")  {
-       base=prompt("base=")
-       height=prompt("height=")
-        return alert(base*height)
-    };
-   if(shape==="prisim"&command==="surface area"){
-       base=prompt("base=")
-       height=prompt("height=")
-       perimeter=prompt("perimeter=")
-        return alert((2*base)+(perimeter*height))
-        //doesnt work fix later
-    };
-   if(shape==="sphere"&command==="volume") {
-       radius=prompt("radius=")
-        return alert((4/3)*pi*(radius*radius*radius))
-    };
-   if(shape==="sphere"&command==="surface area") {
-       radius=prompt("radius=")
-        return alert(4*pi*(radius*radius))
-    };
-   if(shape==="cone"&command==="volume"){
-       radius=prompt("radius=")
-       height=prompt("height=")
-       return alert(pi*(radius*radius)*(height/3))
-   }
-   if(shape==="cone"&command==="surface area"){
-       radius=prompt("radius=")
-       slantHeight=prompt("slant height=")
-   return alert(pi*(radius*radius)+pi*radius*slantHeight)
-};
-   if(shape==="pyrmid"&command==="volume"){
-   return alert(length*width*height/3)
-   }
-   if(shape==="pyrmid"&command==="surface area") {
-       perimeter=prompt("perimeter=")
-       slantHeight=prompt("slant height=")
-   return alert(base+(perimeter/2)*slantHeight)
-   }
-  if(shape==="trigonometry"&command==="formula"){
-       alert("please put x in the side you want to calculate and y in the side that is irrelavent")
-       theta=prompt("theta=")
-       adjacent=prompt("adjacent=")
-       opposite=prompt("opposite=")
-       hypotenuse=prompt("hypotenuse=")
-       if(adjacent==="x"&opposite==="y"){
-           return alert(hypotenuse*Math.cos(theta))
-       }
-       if(adjacent==="x"&opposite==="y"){
-           return alert(opposite*cot(theta))
-       }
-       if(opposite==="x"&adjacent==="y"){
-           return alert(hypotenuse*Math.sin(theta))
-       }
-       if(opposite==="x"&hypotenuse==="y"){
-           return alert(adjacent*Math.tan(theta))  
-       }
-       if(hypotenuse==="x"&adjacent==="y"){
-           return alert(opposite*csc(theta))
-       }
-       if(hypotenuse==="x"&adjacent==="y"){
-           return alert(opposite*sec(theta))
-       }
-   }
+            break;
 
-    return alert("Invalid shape or command");
+        case "quadrilateral":
+            if (command === "area") {
+                const length = parseFloat(prompt("Enter the length:"));
+                const width = parseFloat(prompt("Enter the width:"));
+                result = length * width;
+            } else if (command === "perimeter") {
+                const length = parseFloat(prompt("Enter the length:"));
+                const width = parseFloat(prompt("Enter the width:"));
+                result = 2 * (length + width);
+            }
+            break;
+
+        case "triangle":
+            if (command === "area") {
+                const base = parseFloat(prompt("Enter the base:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = (base * height) / 2;
+            } else if (command === "perimeter") {
+                result = "Cannot be computed. Please add the 3 sides.";
+            }
+            break;
+
+        case "trapezoid":
+            if (command === "area") {
+                const base1 = parseFloat(prompt("Enter the first base:"));
+                const base2 = parseFloat(prompt("Enter the second base:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = 0.5 * (base1 + base2) * height;
+            } else if (command === "perimeter") {
+                result = "Cannot be computed. Please add the 5 sides.";
+            }
+            break;
+
+        case "pythagorean theorem":
+            if (command === "formula") {
+                alert("Please choose the side you want to find as 'x' and enter the other two sides.");
+                const adjacent = parseFloat(prompt("Enter the adjacent side:"));
+                const opposite = parseFloat(prompt("Enter the opposite side:"));
+                const hypotenuse = parseFloat(prompt("Enter the hypotenuse:"));
+
+                if (isNaN(adjacent)) {
+                    result = Math.sqrt(hypotenuse * hypotenuse - (opposite * opposite));
+                } else if (isNaN(opposite)) {
+                    result = Math.sqrt(hypotenuse * hypotenuse - (adjacent * adjacent));
+                } else if (isNaN(hypotenuse)) {
+                    result = Math.sqrt(adjacent * adjacent + opposite * opposite);
+                }
+            }
+            break;
+
+        case "prism":
+            if (command === "volume") {
+                const base = parseFloat(prompt("Enter the base area:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = base * height;
+            } else if (command === "surface area") {
+                const base = parseFloat(prompt("Enter the base area:"));
+                const perimeter = parseFloat(prompt("Enter the perimeter:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = 2 * base + perimeter * height;
+            }
+            break;
+
+        case "sphere":
+            if (command === "volume") {
+                const radius = parseFloat(prompt("Enter the radius:"));
+                result = (4 / 3) * pi * Math.pow(radius, 3);
+            } else if (command === "surface area") {
+                const radius = parseFloat(prompt("Enter the radius:"));
+                result = 4 * pi * Math.pow(radius, 2);
+            }
+            break;
+
+        case "cone":
+            if (command === "volume") {
+                const radius = parseFloat(prompt("Enter the base radius:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = (1 / 3) * pi * Math.pow(radius, 2) * height;
+            } else if (command === "surface area") {
+                const radius = parseFloat(prompt("Enter the base radius:"));
+                const slantHeight = parseFloat(prompt("Enter the slant height:"));
+                result = pi * Math.pow(radius, 2) + pi * radius * slantHeight;
+            }
+            break;
+
+        case "pyramid":
+            if (command === "volume") {
+                const base = parseFloat(prompt("Enter the base area:"));
+                const height = parseFloat(prompt("Enter the height:"));
+                result = (1 / 3) * base * height;
+            } else if (command === "surface area") {
+                const base = parseFloat(prompt("Enter the base area:"));
+                const perimeter = parseFloat(prompt("Enter the perimeter:"));
+                const slantHeight = parseFloat(prompt("Enter the slant height:"));
+                result = base + (perimeter / 2) * slantHeight;
+            }
+            break;
+
+        case "trigonometry":
+            if (command === "formula") {
+            const Itheta=parseFloat(prompt("Enter the value for Theta in degrees"))
+            alert("Please put x for the side you are solving for and y in the side that is useless")
+            const adjacent=parseFloat(prompt("Enter the value for adjacent"))
+            const opposite=parseFloat(prompt("Enter the value for opposite"))
+            const hypotenuse=parseFloat(prompt("Enter the value for hypotenuse"))
+            const theta=Itheta*Math.PI/180
+            
+			if(opposite==="x"&adjacent==="y"){
+            result=hypotenuse*Math.sin(theta)
+            }
+            else if(adjacent==="x" & opposite==="y"){
+            result=hypotenuse*Math.cos(theta)
+            }
+            else if(opposite==="x" & hypotenuse==="y"){
+            result=adjacent*Math.tan(theta)
+            }
+            else if(hypotenuse==="x" & opposite==="y"){
+            result=adjacent*Math.sec(theta)
+            }
+            else if(hypotenuse==="x" & adjacent==="y"){
+            result=opposite*Math.csc(theta)
+            }
+            else if(adjacent==="x" & hypotenuse==="y"){
+            opposite*Math.cot(theta)
+            }
+            }
+            break;
+
+        default:
+            result = "Invalid shape or command.";
+            break;
+    }
+
+    document.querySelector(".result").textContent = result;
 }
+function isValidShape(shape) {
+  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
+  return validShapes.includes(shape);
+}
+
+function isValidCommand(command) {
+  const validCommands = ["area", "perimeter", "volume", "surface area", "formula","Please Select a Command"];
+  return validCommands.includes(command);
+}
+
+
 
 function uiSolve() {
-    var shape =''
-    var command =''
-    shape=prompt('shape=')
-    command=prompt('command=')
-    solve(shape,command)
+  const options = getOptions();
+
+  // Validate the shape and command
+  if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
+    alert("Invalid shape or command.");
+    return;
+  }
+
+  // Call the solve function
+  solve(options.shape, options.command);
 }
 
 
-
-// Add an event listener to call uiSolve when the page loads
-    uiSolve();
-
-
-
-
-
+        window.onload = function() {
+            // Initialize the UI
+            uiSolve();
+        };
