@@ -55,6 +55,7 @@
     <div class="output"></div>
     <button onclick="uiSolve()">Solve</button>
     <div class="result"></div>
+
 <p1>
 <hr>
 </hr>
@@ -73,13 +74,24 @@ Please reach me at 28yalonc@mtps.us for any bugs or sugestions
     	function uiSelect(){
         uisolve()
         }
-        function getOptions() {
             const shape = document.getElementById('select1').value;
             const command = document.getElementById('select2').value;
+        function getOptions() {
+             shape = document.getElementById('select1').value;
+             command = document.getElementById('select2').value;
 
             return { shape, command };
         }
 function unitsAdjustment(units, command) {
+if(command==="area"||command==="surface area"){
+return units+" squared"
+}
+else if(command==="perimeter"||command==="formula"){
+return units
+}
+else if(command==="volume"){
+return units+" cubed"
+}
     return units;
 }
 
@@ -98,10 +110,10 @@ function unitsAdjustment(units, command) {
         case "circle":
             if (command === "area") {
                 const radius = parseFloat(prompt("Enter the radius:"));
-                result = pi * Math.pow(radius, 2)+unitsAdjustment(units,command);
+                result = pi * Math.pow(radius, 2);
             } else if (command === "perimeter") {
                 const radius = parseFloat(prompt("Enter the radius:"));
-                result = 2 * pi * radius+unitsAdjustment(units,command);
+                result = 2 * pi * radius;
             }
             break;
 
@@ -109,11 +121,11 @@ function unitsAdjustment(units, command) {
             if (command === "area") {
                 const length = parseFloat(prompt("Enter the length:"));
                 const width = parseFloat(prompt("Enter the width:"));
-                result = length * width+unitsAdjustment(units,command);
+                result = length * width;
             } else if (command === "perimeter") {
                 const length = parseFloat(prompt("Enter the length:"));
                 const width = parseFloat(prompt("Enter the width:"));
-                result = 2 * (length + width)+unitsAdjustment(units,command);
+                result = 2 * (length + width);
             }
             break;
 
@@ -121,7 +133,7 @@ function unitsAdjustment(units, command) {
             if (command === "area") {
                 const base = parseFloat(prompt("Enter the base:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = ((base * height) / 2)+unitsAdjustment(units,command);
+                result = ((base * height) / 2);
             } else if (command === "perimeter") {
                 result = "Cannot be computed. Please add the 3 sides.";
             }
@@ -132,7 +144,7 @@ function unitsAdjustment(units, command) {
                 const base1 = parseFloat(prompt("Enter the first base:"));
                 const base2 = parseFloat(prompt("Enter the second base:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = (0.5 * (base1 + base2) * height)+unitsAdjustment(units,command);
+                result = (0.5 * (base1 + base2) * height);
             } else if (command === "perimeter") {
                 result = "Cannot be computed. Please add the 5 sides.";
             }
@@ -148,9 +160,9 @@ function unitsAdjustment(units, command) {
                 if (isNaN(adjacent)) {
                     result = Math.sqrt(hypotenuse * hypotenuse - (opposite * opposite))+unitsAdjustment(units,command);
                 } else if (isNaN(opposite)) {
-                    result = Math.sqrt(hypotenuse * hypotenuse - (adjacent * adjacent))+unitsAdjustment(units,command);
+                    result = Math.sqrt(hypotenuse * hypotenuse - (adjacent * adjacent));
                 } else if (isNaN(hypotenuse)) {
-                    result = Math.sqrt(adjacent * adjacent + opposite * opposite)+unitsAdjustment(units,command);
+                    result = Math.sqrt(adjacent * adjacent + opposite * opposite);
                 }
             }
             break;
@@ -159,22 +171,22 @@ function unitsAdjustment(units, command) {
             if (command === "volume") {
                 const base = parseFloat(prompt("Enter the base area:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = (base * height)+unitsAdjustment(units,command);
+                result = (base * height);
             } else if (command === "surface area") {
                 const base = parseFloat(prompt("Enter the base area:"));
                 const perimeter = parseFloat(prompt("Enter the perimeter:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = (2 * base + perimeter * height)+unitsAdjustment(units,command);
+                result = (2 * base + perimeter * height);
             }
             break;
 
         case "sphere":
             if (command === "volume") {
                 const radius = parseFloat(prompt("Enter the radius:"));
-                result = (4 / 3) * pi * Math.pow(radius, 3)+unitsAdjustment(units,command);
+                result = (4 / 3) * pi * Math.pow(radius, 3);
             } else if (command === "surface area") {
                 const radius = parseFloat(prompt("Enter the radius:"));
-                result = 4 * pi * Math.pow(radius, 2)+unitsAdjustment(units,command);
+                result = 4 * pi * Math.pow(radius, 2);
             }
             break;
 
@@ -182,11 +194,11 @@ function unitsAdjustment(units, command) {
             if (command === "volume") {
                 const radius = parseFloat(prompt("Enter the base radius:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = ((1 / 3) * pi * Math.pow(radius, 2) * height)+unitsAdjustment(units,command);
+                result = ((1 / 3) * pi * Math.pow(radius, 2) * height);
             } else if (command === "surface area") {
                 const radius = parseFloat(prompt("Enter the base radius:"));
                 const slantHeight = parseFloat(prompt("Enter the slant height:"));
-                result = (pi * Math.pow(radius, 2) + pi * radius * slantHeight)+unitsAdjustment(units,command);
+                result = (pi * Math.pow(radius, 2) + pi * radius * slantHeight);
             }
             break;
 
@@ -194,12 +206,12 @@ function unitsAdjustment(units, command) {
             if (command === "volume") {
                 const base = parseFloat(prompt("Enter the base area:"));
                 const height = parseFloat(prompt("Enter the height:"));
-                result = (1 / 3) * base * height+unitsAdjustment(units,command);
+                result = (1 / 3) * base * height;
             } else if (command === "surface area") {
                 const base = parseFloat(prompt("Enter the base area:"));
                 const perimeter = parseFloat(prompt("Enter the perimeter:"));
                 const slantHeight = parseFloat(prompt("Enter the slant height:"));
-                result = base + (perimeter / 2) * slantHeight+unitsAdjustment(units,command);
+                result = base + (perimeter / 2) * slantHeight;
             }
             break;
 
@@ -210,20 +222,20 @@ alert("Please put x for the side you are solving for and y in the side that is u
 const adjacent = prompt("Enter the value for adjacent");
 const opposite = prompt('Enter the value for opposite');
 const hypotenuse = parseFloat(prompt("Enter the value for hypotenuse"));
-const theta = Itheta * (Math.PI / 180)+unitsAdjustment(units,command);
+const theta = Itheta * (Math.PI / 180);
 
 if (opposite === 'x' && adjacent === 'y') {
     result = hypotenuse * Math.sin(theta);
 } else if (adjacent === 'x' && opposite === 'y') {
-    result = hypotenuse * Math.cos(theta)+unitsAdjustment(units,command);
+    result = hypotenuse * Math.cos(theta);
 } else if (opposite === 'x' && hypotenuse === 0) {
-    result = adjacent / Math.tan(theta)+unitsAdjustment(units,command);
+    result = adjacent / Math.tan(theta);
 } else if (hypotenuse === 'x' && opposite === 'y') {
-    result = adjacent / (1 / Math.sin(theta))+unitsAdjustment(units,command);
+    result = adjacent / (1 / Math.sin(theta));
 } else if (hypotenuse === 'x' && adjacent === 'y') {
-    result = opposite / Math.cos(theta)+unitsAdjustment(units,command);
+    result = opposite / Math.cos(theta);
 } else if (adjacent === 'x' && hypotenuse === 'y') {
-    result = opposite / Math.tan(theta)+unitsAdjustment(units,command);
+    result = opposite / Math.tan(theta);
 }
             }
             break;
@@ -232,8 +244,7 @@ if (opposite === 'x' && adjacent === 'y') {
             result = "Invalid shape or command.";
             break;
     }
-
-    document.querySelector(".result").textContent = result;
+  document.querySelector(".result").textContent = result 
 }
 function isValidShape(shape) {
   const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
@@ -257,7 +268,9 @@ function uiSolve() {
   }
 
   // Call the solve function
-  solve(options.shape, options.command);
+  solve(options.shape, options.command)
+  var adjustedUnits=(unitsAdjustment(units,command));
+alert(adjustedUnits)
 }
 
 
