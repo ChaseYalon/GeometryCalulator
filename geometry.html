@@ -74,26 +74,25 @@ Please reach me at 28yalonc@mtps.us for any bugs or sugestions
     	function uiSelect(){
         uisolve()
         }
-            const shape = document.getElementById('select1').value;
-            const command = document.getElementById('select2').value;
+            let shape = document.getElementById('select1').value;
+            let command = document.getElementById('select2').value;
         function getOptions() {
              shape = document.getElementById('select1').value;
              command = document.getElementById('select2').value;
 
             return { shape, command };
         }
-function unitsAdjustment(units, command) {
-if(command==="area"||command==="surface area"){
-return units+" squared"
-}
-else if(command==="perimeter"||command==="formula"){
-return units
-}
-else if(command==="volume"){
-return units+" cubed"
-}
-    return units;
-}
+        function unitsAdjustment(units, command) {
+            if (command === "area" || command === "surface area") {
+                return units + " squared";
+            } else if (command === "perimeter" || command === "formula") {
+                return units;
+            } else if (command === "volume") {
+                return units + " cubed";
+            }
+            return units;
+        }
+
 
   function solve(shape, command,units) {
     const pi = Math.PI;
@@ -244,7 +243,7 @@ if (opposite === 'x' && adjacent === 'y') {
             result = "Invalid shape or command.";
             break;
     }
-  document.querySelector(".result").textContent = result 
+            document.querySelector(".result").textContent = result + " " + unitsAdjustment("", command);
 }
 function isValidShape(shape) {
   const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
@@ -258,21 +257,18 @@ function isValidCommand(command) {
 
 
 
-function uiSolve() {
-  const options = getOptions();
+        function uiSolve() {
+            let options = getOptions();
 
-  // Validate the shape and command
-  if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
-    alert("Invalid shape or command.");
-    return;
-  }
+            // Validate the shape and command
+            if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
+                alert("Invalid shape or command.");
+                return;
+            }
 
-  // Call the solve function
-  solve(options.shape, options.command)
-  var adjustedUnits=(unitsAdjustment(units,command));
-alert(adjustedUnits)
-}
-
+            // Call the solve function
+            solve(options.shape, options.command);
+        }
 
         window.onload = function() {
             // Initialize the UI
