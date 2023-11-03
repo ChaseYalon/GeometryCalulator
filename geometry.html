@@ -24,64 +24,20 @@
 
 </head>
 <body>
-
-<select id="select1" onchange="uiSelect()">
- <option value="Please Select a Shape">Please Select a Shape</option>
-  <option value="circle">circle</option>
-  <option value="triangle">triangle</option>
-  <option value="quadrilateral">quadrilateral</option>
-  <option value="trapezoid">trapezoid</option>
-  <option value="pythagorean theorem">pythagorean theorem</option>
-  <option value="sphere">sphere</option>
-  <option value="pyramid">pyramid</option>
-  <option value="cone">cone</option>
-  <option value="prism">prism</option>
-  <option value="trigonometry">trigonometry</option>
-</select>
-
-<select id="select2" onchange="uiSelect()">
-  <option value="Please Select a Command">Please Select a Command</option>
-  <option value="area">area</option>
-  <option value="perimeter">perimeter</option>
-  <option value="volume">volume</option>
-  <option value="surface area">surface area</option>
-  <option value="formula">formula</option>
-</select><br>
-<br>
-<label for="units">Units (optional)</label><br>
-<input type="text" id="units" name="units" value=""><br>
-
-
-    <div class="output"></div>
-    <button onclick="uiSolve()">Solve</button>
-    <div class="result"></div>
-
-<p1>
-<hr>
-</hr>
-By: Chase Yalon
-<hr>
-</hr>
-All rights reserved 2023
-<hr>
-</hr>
-Please reach me at 28yalonc@mtps.us for any bugs or sugestions
-<hr>
-</hr>
-<a href="https://docs.google.com/document/d/1gp59ijskpiOwh9ics3xiattdgwxkM1FluSdWqb8lyHo/view">Patch notes</a>
-</p1>
-    <script>
+<script>
     	function uiSelect(){
         uiSolve()
         }
             const shape = document.getElementById('select1').value;
             const command = document.getElementById('select2').value;
-        function getOptions() {
-             shape = document.getElementById('select1').value;
-             command = document.getElementById('select2').value;
+function getOptions() {
+    const shape = document.getElementById('select1').value;
+    const command = document.getElementById('select2').value;
+    const units = document.getElementById('units').value;
 
-            return { shape, command };
-        }
+    return { shape, command, units };
+}
+
 function unitsAdjustment(units, command) {
 if(command==="area"||command==="surface area"){
 return units+" squared"
@@ -258,31 +214,19 @@ function isValidCommand(command) {
 }
 
 
+function uiSolve() {
+    const options = getOptions();
+    const unitsElement = document.getElementById('units');
+    const units = unitsElement.value;
 
-       function uiSolve() {
-            const options = getOptions();
-            const unitsElement = document.getElementById('units');
-            const units = unitsElement.value;
+    if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
+        alert("Invalid shape or command.");
+        return;
+    }
 
-            if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
-                alert("Invalid shape or command.");
-                return;
-            }
-
-            solve(options.shape, options.command, units);
-        }
-
-  // Validate the shape and command
-  if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
-    alert("Invalid shape or command.");
-    return;
-  }
-
-  // Call the solve function
-  solve(options.shape, options.command)
-  var adjustedUnits=(unitsAdjustment(units,command));
-alert(adjustedUnits)
+    solve(options.shape, options.command, units);
 }
+
 
 
 
@@ -291,5 +235,51 @@ alert(adjustedUnits)
             uiSolve();
         };
     </script>
+<select id="select1" onchange="uiSelect()">
+ <option value="Please Select a Shape">Please Select a Shape</option>
+  <option value="circle">circle</option>
+  <option value="triangle">triangle</option>
+  <option value="quadrilateral">quadrilateral</option>
+  <option value="trapezoid">trapezoid</option>
+  <option value="pythagorean theorem">pythagorean theorem</option>
+  <option value="sphere">sphere</option>
+  <option value="pyramid">pyramid</option>
+  <option value="cone">cone</option>
+  <option value="prism">prism</option>
+  <option value="trigonometry">trigonometry</option>
+</select>
+
+<select id="select2" onchange="uiSelect()">
+  <option value="Please Select a Command">Please Select a Command</option>
+  <option value="area">area</option>
+  <option value="perimeter">perimeter</option>
+  <option value="volume">volume</option>
+  <option value="surface area">surface area</option>
+  <option value="formula">formula</option>
+</select><br>
+<br>
+<label for="units">Units (optional)</label><br>
+<input type="text" id="units" name="units" value=""><br>
+
+
+    <div class="output"></div>
+    <button onclick="uiSolve()">Solve</button>
+    <div class="result"></div>
+
+<p1>
+<hr>
+</hr>
+By: Chase Yalon
+<hr>
+</hr>
+All rights reserved 2023
+<hr>
+</hr>
+Please reach me at 28yalonc@mtps.us for any bugs or sugestions
+<hr>
+</hr>
+<a href="https://docs.google.com/document/d/1gp59ijskpiOwh9ics3xiattdgwxkM1FluSdWqb8lyHo/view">Patch notes</a>
+</p1>
+    
 </body>
 </html>
