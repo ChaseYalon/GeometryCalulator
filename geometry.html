@@ -72,27 +72,28 @@ Please reach me at 28yalonc@mtps.us for any bugs or sugestions
 </p1>
     <script>
     	function uiSelect(){
-        uisolve()
+        uiSolve()
         }
-            let shape = document.getElementById('select1').value;
-            let command = document.getElementById('select2').value;
+            const shape = document.getElementById('select1').value;
+            const command = document.getElementById('select2').value;
         function getOptions() {
              shape = document.getElementById('select1').value;
              command = document.getElementById('select2').value;
 
             return { shape, command };
         }
-        function unitsAdjustment(units, command) {
-            if (command === "area" || command === "surface area") {
-                return units + " squared";
-            } else if (command === "perimeter" || command === "formula") {
-                return units;
-            } else if (command === "volume") {
-                return units + " cubed";
-            }
-            return units;
-        }
-
+function unitsAdjustment(units, command) {
+if(command==="area"||command==="surface area"){
+return units+" squared"
+}
+else if(command==="perimeter"||command==="formula"){
+return units
+}
+else if(command==="volume"){
+return units+" cubed"
+}
+    return units;
+}
 
   function solve(shape, command,units) {
     const pi = Math.PI;
@@ -243,7 +244,8 @@ if (opposite === 'x' && adjacent === 'y') {
             result = "Invalid shape or command.";
             break;
     }
-            document.querySelector(".result").textContent = result + " " + unitsAdjustment("", command);
+var adjustedUnits = unitsAdjustment(units, command); // Adjust the units
+  document.querySelector(".result").textContent = result + " " + adjustedUnits;
 }
 function isValidShape(shape) {
   const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
@@ -257,18 +259,32 @@ function isValidCommand(command) {
 
 
 
-        function uiSolve() {
-            let options = getOptions();
+       function uiSolve() {
+            const options = getOptions();
+            const unitsElement = document.getElementById('units');
+            const units = unitsElement.value;
 
-            // Validate the shape and command
             if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
                 alert("Invalid shape or command.");
                 return;
             }
 
-            // Call the solve function
-            solve(options.shape, options.command);
+            solve(options.shape, options.command, units);
         }
+
+  // Validate the shape and command
+  if (!isValidShape(options.shape) || !isValidCommand(options.command)) {
+    alert("Invalid shape or command.");
+    return;
+  }
+
+  // Call the solve function
+  solve(options.shape, options.command)
+  var adjustedUnits=(unitsAdjustment(units,command));
+alert(adjustedUnits)
+}
+
+
 
         window.onload = function() {
             // Initialize the UI
