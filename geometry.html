@@ -135,7 +135,27 @@ return units+" cubed"
                 result = (2 * base + perimeter * height);
             }
             break;
+        case "quadratic solver":
+        const a = parseFloat(prompt('Enter the A value'));
+const b = parseFloat(prompt('Enter the B value'));
+const c = parseFloat(prompt('Enter the C value'));
+var discriminant = Math.pow(b, 2) - 4 * a * c;
 
+if (discriminant < 0) {
+    alert('ERROR: No real solutions');
+    console.log('todo, imaginary solutions');
+} else if (discriminant === 0) {
+    // Handling the case where there is exactly one solution
+    var root = -b / (2 * a);
+    console.log(`Single root: ${root}`);
+} else {
+    var plus = (-b + Math.sqrt(discriminant)) / (2 * a);
+    var minus = (-b - Math.sqrt(discriminant)) / (2 * a);
+    result = `{${plus},${minus}}`;
+    console.log(result);
+}
+
+            break;
         case "sphere":
             if (command === "volume") {
                 const radius = parseFloat(prompt("Enter the radius:"));
@@ -204,12 +224,12 @@ var adjustedUnits = unitsAdjustment(units, command); // Adjust the units
   document.querySelector(".result").textContent = result + " " + adjustedUnits;
 }
 function isValidShape(shape) {
-  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism","trigonometry","Please Select a Shape"];
+  const validShapes = ["circle", "triangle", "quadrilateral", "trapezoid", "pythagorean theorem", "sphere", "pyramid", "cone", "prism", "trigonometry", "Please Select a Shape", "quadratic solver"];
   return validShapes.includes(shape);
 }
 
 function isValidCommand(command) {
-  const validCommands = ["area", "perimeter", "volume", "surface area", "formula","Please Select a Command"];
+  const validCommands = ["area", "perimeter", "volume", "surface area", "formula", "Please Select a Command"];
   return validCommands.includes(command);
 }
 
@@ -247,6 +267,8 @@ function uiSolve() {
   <option value="cone">cone</option>
   <option value="prism">prism</option>
   <option value="trigonometry">trigonometry</option>
+  <option value="quadratic solver">quadratic solver</option>
+
 </select>
 
 <select id="select2" onchange="uiSelect()">
@@ -256,6 +278,7 @@ function uiSolve() {
   <option value="volume">volume</option>
   <option value="surface area">surface area</option>
   <option value="formula">formula</option>
+  <option value="quadratic solver">quadratic solver</option>
 </select><br>
 <br>
 <label for="units">Units (optional)</label><br>
