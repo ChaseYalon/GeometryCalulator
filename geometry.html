@@ -142,11 +142,17 @@ const c = parseFloat(prompt('Enter the C value'));
 var discriminant = Math.pow(b, 2) - 4 * a * c;
 
 if (discriminant < 0) {
-    alert('ERROR: No real solutions');
-    console.log('todo, imaginary solutions');
+    var sqrtDiscriminant = Math.sqrt(Math.abs(discriminant)); // Correct way to handle square root of negative number
+    var realPart = -b / (2 * a);
+    var imaginaryPart = sqrtDiscriminant / (2 * a);
+    var plusFinal = `${realPart} + ${imaginaryPart}i`;
+    var minusFinal = `${realPart} - ${imaginaryPart}i`;
+    result = `{${plusFinal}, ${minusFinal}}`;
+    console.log(result);
 } else if (discriminant === 0) {
     // Handling the case where there is exactly one solution
     var root = -b / (2 * a);
+    result=root
     console.log(`Single root: ${root}`);
 } else {
     var plus = (-b + Math.sqrt(discriminant)) / (2 * a);
